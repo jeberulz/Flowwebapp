@@ -193,9 +193,10 @@ html {
   font-size: var(--font-size);
 }
 
-/* Glass border gradient effect */
+/* Glass border gradient effect with liquid glass */
 .border-gradient {
   position: relative;
+  --fx-filter: blur(10px) liquid-glass(5,10) saturate(1.2) noise(0.5,1,0);
 }
 
 .border-gradient::before {
