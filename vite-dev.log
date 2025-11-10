@@ -1,0 +1,9 @@
+
+> Flow Web App@0.1.0 dev
+> vite --host 0.0.0.0
+
+
+  VITE v6.3.5  ready in 223 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://192.168.68.145:3000/
