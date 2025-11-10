@@ -3,25 +3,27 @@ import { X, Home, Wallet, CreditCard, Send, ChartNoAxesCombined, Wand2, Flag, Gi
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  currentPage: string;
+  onPageChange: (page: string) => void;
 }
 
-export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
+export function MobileSidebar({ isOpen, onClose, currentPage, onPageChange }: MobileSidebarProps) {
   if (!isOpen) return null;
 
   const navItems = [
-    { icon: Home, label: 'Overview', href: '#', active: true },
-    { icon: Wallet, label: 'Accounts', href: '#' },
-    { icon: CreditCard, label: 'Cards', href: '#' },
-    { icon: Send, label: 'Payments', href: '#' },
-    { icon: ChartNoAxesCombined, label: 'Insights', href: '#' },
-    { icon: Wand2, label: 'Automations', href: '#' },
-    { icon: Flag, label: 'Goals', href: '#' },
-    { icon: Gift, label: 'Rewards', href: '#' },
+    { icon: Home, label: 'Overview', id: 'overview' },
+    { icon: Wallet, label: 'Accounts', id: 'accounts' },
+    { icon: CreditCard, label: 'Cards', id: 'cards' },
+    { icon: Send, label: 'Payments', id: 'payments' },
+    { icon: ChartNoAxesCombined, label: 'Insights', id: 'insights' },
+    { icon: Wand2, label: 'Automations', id: 'automations' },
+    { icon: Flag, label: 'Goals', id: 'goals' },
+    { icon: Gift, label: 'Rewards', id: 'rewards' },
   ];
 
   const bottomItems = [
-    { icon: Settings, label: 'Settings', href: '#' },
-    { icon: LifeBuoy, label: 'Support', href: '#' },
+    { icon: Settings, label: 'Settings', id: 'settings' },
+    { icon: LifeBuoy, label: 'Support', id: 'support' },
   ];
 
   return (
@@ -53,30 +55,30 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <a 
+                  <button
                     key={item.label}
-                    className={`rounded-lg px-3 py-2 flex items-center gap-2 ${
-                      item.active ? 'ring-1 ring-white/10 bg-white/10' : 'ring-1 ring-white/10 hover:bg-white/10'
-                    }`} 
-                    href={item.href}
+                    onClick={() => onPageChange(item.id)}
+                    className={`w-full rounded-lg px-3 py-2 flex items-center gap-2 ${
+                      currentPage === item.id ? 'ring-1 ring-white/10 bg-white/10' : 'ring-1 ring-white/10 hover:bg-white/10'
+                    }`}
                   >
                     <Icon className="h-4 w-4" />
                     {item.label}
-                  </a>
+                  </button>
                 );
               })}
               <div className="border-t border-white/10 my-2"></div>
               {bottomItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <a 
+                  <button
                     key={item.label}
-                    className="rounded-lg px-3 py-2 ring-1 ring-white/10 hover:bg-white/10 flex items-center gap-2" 
-                    href={item.href}
+                    onClick={() => onPageChange(item.id)}
+                    className="w-full rounded-lg px-3 py-2 ring-1 ring-white/10 hover:bg-white/10 flex items-center gap-2"
                   >
                     <Icon className="h-4 w-4" />
                     {item.label}
-                  </a>
+                  </button>
                 );
               })}
             </li>

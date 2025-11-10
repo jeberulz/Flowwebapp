@@ -72,7 +72,7 @@ export function OverviewCards({ onQuickPay }: OverviewCardsProps) {
       {/* Spending this month */}
       <div className="md:col-span-6 lg:col-span-5 grid grid-cols-2 gap-4">
         <div className="col-span-2 rounded-3xl p-[1px] bg-gradient-to-br from-white/0 via-white/20 to-white/0">
-          <div className="rounded-3xl p-5 ring-1 ring-white/10 bg-white/5 backdrop-blur-md">
+          <div className="rounded-3xl p-4 md:p-5 ring-1 ring-white/10 bg-white/5 backdrop-blur-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-white/90">
                 <ChartNoAxesCombined className="h-4.5 w-4.5 text-sky-300" />
